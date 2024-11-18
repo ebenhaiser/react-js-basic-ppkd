@@ -1,34 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react";
 import { useState } from "react";
+import User from "./User";
+import Home from "./Home";
+import Login from "./Login";
 
-const Button = ({ onPress, count }) => {
-  return (
-    <div>
-      <button
-        style={{ backgroundColor: "red", padding: 10, borderRadius: 8 }}
-        onClick={onPress}
-      >
-        Click me
-      </button>
-      <p>{count}</p>
-    </div>
-  );
-}
- 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <button onClick={() => setCount(count + 1)}>Plus</button>
-      <button onClick={() => setCount(count - 1)}>Minus</button>
-      <p>{count}</p>
-
-      <Button onPress={() => setCount(count + 1)} count={count} />
-    </div>
-
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
